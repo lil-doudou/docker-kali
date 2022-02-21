@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 from shutil import which
 import subprocess
