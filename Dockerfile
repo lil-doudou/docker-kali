@@ -1,7 +1,7 @@
 FROM kalilinux/kali-rolling
 
 RUN apt update
-RUN apt install vim firefox-esr openssh-server bash xauth -y
+RUN apt install vim firefox-esr openssh-server bash xauth sudo -y
 
 COPY sshd.sh /
 RUN chmod u+x /sshd.sh
@@ -14,6 +14,7 @@ RUN service ssh start
 
 RUN useradd --home /home/kali --create-home --shell /bin/bash kali
 RUN echo 'kali:kali' | chpasswd
+RUN echo "kali ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 EXPOSE 22
 
